@@ -1,0 +1,6 @@
+/* 较窄窗口下的尺寸调整。 */
+@media (max-width: 1050px) {
+  .sidebar { width: 196px; flex-basis: 196px; }
+  .hero-stats { gap: 18px; }
+  .game-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); }
+}

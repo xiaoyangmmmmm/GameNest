@@ -1,0 +1,257 @@
+/* 侧边栏独立样式：放在 styles.css 后加载，用来覆盖原来的侧边栏规则。 */
+
+.sidebar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 236px;
+  flex: 0 0 236px;
+  flex-direction: column;
+  padding: 20px 14px 16px;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(circle at 12% 4%, rgba(139, 92, 246, 0.17), transparent 27%),
+    linear-gradient(180deg, #11141c 0%, #0c0f15 100%);
+  box-shadow: 12px 0 35px rgba(0, 0, 0, 0.16);
+}
+
+.sidebar::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(166, 128, 255, 0.28), transparent 32%);
+  content: "";
+  pointer-events: none;
+}
+
+.brand {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 8px 24px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(126, 79, 231, 0.38);
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.brand strong {
+  display: block;
+  color: #f4f1ff;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.brand span {
+  display: block;
+  margin-top: 4px;
+  color: #747b8d;
+  font-size: 10px;
+}
+
+.nav {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-label {
+  margin: 7px 12px 10px;
+  color: #555c6c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-label-spaced {
+  margin-top: 28px;
+}
+
+.nav-item {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 42px;
+  grid-template-columns: 27px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  padding: 9px 12px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: #8e95a5;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.nav-item:hover {
+  border-color: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.045);
+  color: #e4e6ec;
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  border-color: rgba(155, 113, 255, 0.18);
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.22), rgba(139, 92, 246, 0.06));
+  box-shadow: inset 0 0 24px rgba(139, 92, 246, 0.035);
+  color: #d3c3ff;
+}
+
+.nav-item.active::before {
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: -14px;
+  width: 3px;
+  height: auto;
+  border-radius: 0 4px 4px 0;
+  background: #9568f7;
+  box-shadow: 0 0 12px rgba(149, 104, 247, 0.75);
+  content: "";
+}
+
+.nav-icon {
+  color: #697183;
+  font-size: 15px;
+  text-align: center;
+  transition: color 0.18s ease;
+}
+
+.nav-item:hover .nav-icon,
+.nav-item.active .nav-icon {
+  color: #aa87ff;
+}
+
+.nav-item b {
+  min-width: 25px;
+  padding: 3px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.055);
+  color: #8e95a5;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  margin-left: 9px;
+  border-radius: 50%;
+}
+
+.status-dot.purple {
+  background: #9c72ff;
+  box-shadow: 0 0 9px rgba(156, 114, 255, 0.85);
+}
+
+.status-dot.gray {
+  background: #555c6b;
+}
+
+.sidebar-footer {
+  margin-top: 15px;
+  padding: 15px 10px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.storage-row {
+  display: flex;
+  justify-content: space-between;
+  color: #777e8e;
+  font-size: 9px;
+}
+
+.storage-bar {
+  height: 4px;
+  margin: 10px 0 13px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #252a35;
+}
+
+.storage-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7042e4, #ae82ff);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.45);
+  transition: width 0.3s ease;
+}
+
+.settings-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #777e8f;
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.settings-button:hover {
+  background: rgba(255, 255, 255, 0.045);
+  color: #e0e2e8;
+}
+
+body.light .sidebar {
+  border-right-color: rgba(26, 30, 43, 0.08);
+  background:
+    radial-gradient(circle at 12% 4%, rgba(139, 92, 246, 0.11), transparent 27%),
+    linear-gradient(180deg, #ffffff 0%, #f5f6fa 100%);
+  box-shadow: 10px 0 30px rgba(30, 34, 48, 0.06);
+}
+
+body.light .brand strong {
+  color: #252733;
+}
+
+body.light .nav-item:hover,
+body.light .settings-button:hover {
+  background: rgba(35, 39, 53, 0.05);
+}
+
+body.light .sidebar-footer {
+  border-color: rgba(26, 30, 43, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+@media (max-width: 1050px) {
+  .sidebar {
+    width: 204px;
+    flex-basis: 204px;
+  }
+}

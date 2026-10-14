@@ -1,0 +1,17 @@
+/* 亮色主题覆盖规则。 */
+body.light {
+  color-scheme: light;
+  --bg: #f4f5f8;
+  --panel: #fff;
+  --panel-2: #eef0f5;
+  --text: #191b22;
+  --muted: #777d8c;
+  --line: rgba(27,31,43,.1);
+}
+body.light .sidebar { background: #fff; }
+body.light .main-content { background: radial-gradient(circle at 70% -20%, rgba(105,65,219,.09), transparent 37%), var(--bg); }
+body.light .topbar { background: rgba(244,245,248,.88); }
+body.light .search-box, body.light .icon-button, body.light .view-button { background: #fff; }
+body.light .view-actions select, body.light .modal { background: #fff; }
+body.light .form-field input, body.light .form-field select, body.light .form-field textarea { background: #f7f8fa; }
+body.light kbd { background: #eef0f4; }

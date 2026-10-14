@@ -1,0 +1,46 @@
+/* 添加游戏、游戏详情和右下角提示。 */
+.modal-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 25px; background: rgba(3,4,7,.72); backdrop-filter: blur(9px); }
+.modal { width: min(520px, 100%); max-height: calc(100vh - 50px); overflow: auto; padding: 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 16px; background: #14171f; box-shadow: var(--shadow); }
+.modal-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 22px; }
+.modal-header h2 { margin: 0; font-size: 19px; }
+.close-button { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 8px; background: rgba(255,255,255,.05); color: #888e9c; font-size: 20px; }
+.close-button:hover { background: rgba(255,255,255,.1); color: white; }
+.form-field { display: block; margin-bottom: 15px; }
+.form-field > span { display: block; margin-bottom: 7px; color: #a3a8b4; font-size: 10px; font-weight: 700; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  outline: 0;
+  background: #0f1218;
+  color: var(--text);
+  font-size: 11px;
+}
+.form-field input, .form-field select { height: 42px; padding: 0 12px; }
+.form-field textarea { min-height: 76px; padding: 11px 12px; resize: vertical; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: rgba(139,92,246,.65); box-shadow: 0 0 0 3px rgba(139,92,246,.08); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.file-input-row { display: flex; gap: 8px; }
+.file-input-row input { flex: 1; }
+.secondary-button { padding: 0 13px; border: 1px solid rgba(139,92,246,.3); border-radius: 9px; background: rgba(139,92,246,.1); color: #c2acfb; font-size: 10px; }
+.secondary-button:hover { background: rgba(139,92,246,.18); }
+.form-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 22px; }
+.ghost-button { padding: 0 16px; border-radius: 9px; background: transparent; color: #858b98; font-size: 11px; }
+.ghost-button:hover { background: rgba(255,255,255,.05); }
+
+.detail-modal { position: relative; width: min(650px, 100%); padding: 0; overflow: hidden; }
+.detail-close { position: absolute; z-index: 2; top: 14px; right: 14px; background: rgba(0,0,0,.28); color: white; backdrop-filter: blur(8px); }
+.detail-hero { min-height: 220px; padding: 36px 34px 28px; background: var(--cover); display: flex; align-items: flex-end; }
+.detail-hero h2 { max-width: 80%; margin: 0; font-size: 30px; line-height: 1.05; text-shadow: 0 3px 20px rgba(0,0,0,.5); }
+.detail-hero p { margin: 9px 0 0; color: rgba(255,255,255,.75); font-size: 10px; }
+.detail-body { padding: 23px 28px 27px; }
+.detail-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+.detail-stat { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.025); }
+.detail-stat span { display: block; margin-bottom: 4px; color: #6f7584; font-size: 8px; }
+.detail-stat strong { font-size: 12px; }
+.detail-notes { min-height: 45px; margin: 0 0 22px; color: #9da2af; font-size: 11px; line-height: 1.7; }
+.detail-actions { display: flex; align-items: center; gap: 9px; }
+.detail-actions .danger { margin-left: auto; color: #d26a7b; }
+
+.toast { position: fixed; z-index: 40; right: 24px; bottom: 24px; max-width: 340px; padding: 12px 16px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: #242832; box-shadow: var(--shadow); color: #e9eaf0; font-size: 11px; animation: toast-in .2s ease; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } }

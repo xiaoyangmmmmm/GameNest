@@ -1,0 +1,12 @@
+/*
+ * GameNest 样式入口。
+ * 具体样式按功能放在 styles 文件夹中，加载顺序不要随意调整。
+ */
+@import url("./styles/base.css");
+@import url("./styles/layout.css");
+@import url("./styles/game-card.css");
+@import url("./styles/modal.css");
+@import url("./styles/theme.css");
+@import url("./styles/responsive.css");
+@import url("./styles/topbar.css");
+@import url("./styles/sidebar.css");

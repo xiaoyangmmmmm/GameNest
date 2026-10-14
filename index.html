@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameNest</title>
+    <link rel="icon" type="image/png" href="./assets/gamenest-icon-64.png" />
+
+    <link rel="stylesheet" href="./styles.css" />
+
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark"><img src="./assets/gamenest-icon-64.png" alt="" /></div>
+          <div>
+            <strong>GameNest</strong>
+            <span>我的游戏空间</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="游戏库分类">
+          <p class="nav-label">游戏库</p>
+          <button class="nav-item active" data-filter="all">
+            <span class="nav-icon">▦</span><span>全部游戏</span><b id="allCount">0</b>
+          </button>
+          <button class="nav-item" data-filter="playing">
+            <span class="nav-icon">▶</span><span>正在玩</span>
+          </button>
+          <button class="nav-item" data-filter="completed">
+            <span class="nav-icon">✓</span><span>已通关</span>
+          </button>
+          <button class="nav-item" data-filter="favorite">
+            <span class="nav-icon">★</span><span>我的收藏</span>
+          </button>
+
+          <button class="nav-item" data-filter="recent">
+            <span class="status-dot purple"></span><span>最近游玩</span>
+          </button>
+          <button class="nav-item" data-filter="not-started">
+            <span class="status-dot gray"></span><span>尚未开始</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="storage-row">
+            <span margin="10">本地游戏库</span><span id="storageText">0 款游戏</span>
+          </div>
+        <div>
+          <button class="settings-button" id="settingsButton">⚙ <span>设置</span></button>
+        </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="搜索游戏名称或类型..." autocomplete="off" />
+            <kbd>Ctrl K</kbd>
+          </label>
+          <button class="add-game-button" id="openAddModal">＋ 添加游戏</button>
+          <button class="window-close-button" id="closeWindow" title="关闭窗口" aria-label="关闭窗口">×</button>
+        </header>
+
+        <section class="hero">
+          <div>
+            <p class="eyebrow">WELCOME BACK</p>
+            <h1>晚上好</h1>
+            <p class="hero-copy">整理你的收藏</p>
+          </div>
+          <div class="hero-stats">
+            <div><strong id="totalGames">0</strong><span>游戏总数</span></div>
+            <div><strong id="totalHours">0h</strong><span>游玩时长</span></div>
+            <div><strong id="completedGames">0</strong><span>已经通关</span></div>
+          </div>
+        </section>
+
+        <section class="library-section">
+          <div class="section-heading">
+            <div>
+              <h2 id="sectionTitle">全部游戏</h2>
+              <p id="resultText">你的全部收藏</p>
+            </div>
+            <div class="view-actions">
+              <select id="sortSelect" aria-label="排序方式">
+                <option value="recent">最近添加</option>
+                <option value="title">名称排序</option>
+                <option value="playtime">游玩时长</option>
+                <option value="rating">我的评分</option>
+              </select>
+              <button class="view-button active" data-view="grid" title="卡片视图">▦</button>
+              <button class="view-button" data-view="list" title="列表视图">☷</button>
+            </div>
+          </div>
+
+          <div class="game-grid" id="gameGrid"></div>
+
+          <div class="empty-state hidden" id="emptyState">
+            <div class="empty-icon">◇</div>
+            <h3>没有找到游戏</h3>
+            <p>换个关键词，或者向游戏库添加一款游戏。</p>
+            <button class="primary-button" id="emptyAddButton">＋ 添加游戏</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="gameModal">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">ADD TO LIBRARY</p>
+            <h2 id="modalTitle">添加本地游戏</h2>
+          </div>
+          <button class="close-button" id="closeModal" aria-label="关闭">×</button>
+        </div>
+        <form id="gameForm">
+          <label class="form-field">
+            <span>游戏名称</span>
+            <input id="gameTitle" required maxlength="60" placeholder="输入游戏名称" />
+          </label>
+          <div class="form-row">
+            <label class="form-field">
+              <span>游戏类型</span>
+              <input id="gameGenre" maxlength="40" placeholder="动作 / 冒险" />
+            </label>
+            <label class="form-field">
+              <span>游玩状态</span>
+              <select id="gameStatus">
+                <option value="not-started">尚未开始</option>
+                <option value="playing">正在玩</option>
+                <option value="completed">已通关</option>
+              </select>
+            </label>
+          </div>
+          <label class="form-field">
+            <span>启动程序</span>
+            <div class="file-input-row">
+              <input id="gamePath" readonly placeholder="请选择游戏的 .exe 文件" />
+              <button type="button" class="secondary-button" id="pickExecutable">选择文件</button>
+            </div>
+          </label>
+          <label class="form-field">
+            <span>备注</span>
+            <textarea id="gameNotes" maxlength="240" placeholder="写点攻略进度、游玩感受……"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="button" class="ghost-button" id="cancelModal">取消</button>
+            <button type="submit" class="primary-button">添加到游戏库</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="modal-backdrop hidden" id="detailModal">
+      <section class="modal detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="close-button detail-close" id="closeDetail" aria-label="关闭">×</button>
+        <div id="detailContent"></div>
+      </section>
+    </div>
+
+    <div class="toast hidden" id="toast"></div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

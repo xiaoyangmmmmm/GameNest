@@ -1,0 +1,53 @@
+/* 游戏卡片、列表视图和空状态。 */
+.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap: 17px; }
+.game-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  cursor: pointer;
+  box-shadow: 0 9px 26px rgba(0,0,0,.16);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.game-card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,.38); box-shadow: 0 16px 38px rgba(0,0,0,.3); }
+.game-cover { position: relative; height: 218px; overflow: hidden; isolation: isolate; }
+.cover-art { position: absolute; inset: 0; background: var(--cover); }
+.cover-art::before {
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(circle at 65% 35%, rgba(255,255,255,.32), transparent 25%), linear-gradient(125deg, transparent 35%, rgba(255,255,255,.13) 36%, transparent 54%);
+  content: "";
+  transform: rotate(-8deg);
+}
+.cover-art::after { position: absolute; inset: auto -15% -28% 5%; height: 65%; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; background: rgba(0,0,0,.14); content: ""; transform: rotate(-13deg); }
+.cover-title { position: absolute; z-index: 1; right: 14px; bottom: 18px; left: 14px; text-shadow: 0 2px 16px rgba(0,0,0,.65); }
+.cover-title b { display: block; font-size: 19px; line-height: 1.06; letter-spacing: -.5px; }
+.cover-title span { display: block; margin-top: 7px; color: rgba(255,255,255,.7); font-size: 8px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+.favorite-button { position: absolute; z-index: 3; top: 10px; right: 10px; display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; background: rgba(10,10,14,.36); color: rgba(255,255,255,.62); cursor: pointer; backdrop-filter: blur(8px); }
+.favorite-button.active { color: #ffd76a; }
+.card-body { padding: 12px 13px 13px; }
+.game-name { overflow: hidden; margin: 0; font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.game-meta { margin: 5px 0 11px; color: #727887; font-size: 9px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; }
+.status-pill { display: inline-flex; align-items: center; gap: 5px; color: #a1a6b2; font-size: 8px; }
+.status-pill i { width: 5px; height: 5px; border-radius: 50%; background: #646a78; }
+.status-pill.playing i { background: #9c72ff; box-shadow: 0 0 7px #9c72ff; }
+.status-pill.completed i { background: var(--success); }
+.play-button { display: grid; width: 28px; height: 28px; place-items: center; border: 0; border-radius: 8px; background: rgba(139,92,246,.15); color: #b99cff; cursor: pointer; }
+.play-button:hover { background: var(--accent); color: white; }
+
+.game-grid.list-view { display: flex; flex-direction: column; gap: 8px; }
+.list-view .game-card { display: grid; grid-template-columns: 70px 1fr; min-height: 82px; }
+.list-view .game-card:hover { transform: translateX(3px); }
+.list-view .game-cover { height: 82px; }
+.list-view .cover-title { display: none; }
+.list-view .favorite-button { top: 7px; right: 7px; }
+.list-view .card-body { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(100px, .7fr) 110px; align-items: center; gap: 14px; }
+.list-view .game-meta { margin: 4px 0 0; }
+.list-view .card-footer { display: contents; }
+
+.empty-state { padding: 75px 20px; border: 1px dashed var(--line); border-radius: 14px; text-align: center; }
+.empty-icon { margin-bottom: 9px; color: var(--accent); font-size: 42px; }
+.empty-state h3 { margin: 0; font-size: 16px; }
+.empty-state p { margin: 8px 0 20px; color: var(--muted); font-size: 11px; }

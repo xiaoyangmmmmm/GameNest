@@ -1,0 +1,46 @@
+{
+  "name": "gamenest",
+  "version": "1.0.0",
+  "description": "本地运行的单机游戏管理工具",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win --x64"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.gamenest.app",
+    "productName": "GameNest",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "styles/**/*",
+      "assets/**/*"
+    ],
+    "win": {
+      "icon": "assets/gamenest-icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

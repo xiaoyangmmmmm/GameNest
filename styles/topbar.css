@@ -1,0 +1,74 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 17px 30px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(11,13,18,.88);
+  backdrop-filter: blur(18px);
+  -webkit-app-region: drag;
+}
+
+.search-box,
+.add-game-button,
+.window-close-button {
+  -webkit-app-region: no-drag;
+}
+
+.window-close-button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #858b99;
+  font-size: 22px;
+  cursor: pointer;
+
+}
+.window-close-button:hover {
+  background: #e81123;
+  color: white;
+}
+
+.search-box {
+  display: flex;
+  height: 40px;
+  max-width: 520px;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.035);
+  color: #6f7584;
+}
+.search-box:focus-within { border-color: rgba(139,92,246,.55); box-shadow: 0 0 0 3px rgba(139,92,246,.08); }
+.search-box input { flex: 1; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 12px; }
+.search-box input::placeholder { color: #626876; }
+kbd { padding: 3px 7px; border: 1px solid var(--line); border-radius: 5px; background: #171a22; color: #686e7b; font-size: 9px; box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+
+.add-game-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 15px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(139,92,246,.1);
+  color: #8b5cf6;
+  font-size: 12px;
+}
+.add-game-button:hover { background: rgba(139,92,246,.15); }

@@ -1,0 +1,15 @@
+# 安装依赖，可通过 npm install 重新生成
+node_modules/
+
+# Electron 打包产物
+release/
+dist/
+out/
+
+# 本地用户数据
+games/games.json
+
+# 日志与系统临时文件
+*.log
+.DS_Store
+Thumbs.db

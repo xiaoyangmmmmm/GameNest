@@ -1,0 +1,33 @@
+/* 全局颜色、字体和所有页面都会用到的基础规则。 */
+:root {
+  color-scheme: dark;
+  --bg: #0b0d12;
+  --panel: #11141b;
+  --panel-2: #171a23;
+  --panel-3: #1d212c;
+  --text: #f4f5f8;
+  --muted: #8c92a3;
+  --line: rgba(255, 255, 255, 0.075);
+  --accent: #8b5cf6;
+  --accent-2: #6d3ee8;
+  --success: #52d6a2;
+  --danger: #fb7185;
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Microsoft YaHei", "Segoe UI", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button, input, select, textarea { font: inherit; }
+button { color: inherit; }
+
+.hidden { display: none !important; }
